@@ -17,9 +17,6 @@ import java.time.Duration;
 
 import static java.lang.String.format;
 
-
-// TODO: Auto-generated Javadoc
-
 /**
  * Base class for all screens Objects.
  *
@@ -176,10 +173,11 @@ public abstract class BaseScreen {
      * Wrapper for Visibility event.
      *
      * @param element : AndroidElement
+     * @param timeout : int
      * @author Hans.Marquez
      */
-    public boolean isElementAvailable(AndroidElement element, int timeOut) {
-        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+    public boolean isElementAvailable(AndroidElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
