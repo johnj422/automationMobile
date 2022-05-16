@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static java.lang.String.format;
+
 
 // TODO: Auto-generated Javadoc
 
@@ -23,7 +25,7 @@ import java.time.Duration;
  *
  * @author Arley.Bolivar
  */
-public abstract class BaseScreen{
+public abstract class BaseScreen {
 
     /**
      * The driver.
@@ -44,8 +46,32 @@ public abstract class BaseScreen{
     public BaseScreen(AndroidDriver<AndroidElement> driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(
-                driver, Duration.ofSeconds(15)), this);
+                driver, Duration.ofSeconds(0)), this);
     }
+
+
+    /**
+     * Scroll down (From Top to Bottom).
+     *
+     * @param swipes the swipes
+     * @author Hans.Marquez
+     */
+    public void scrollDown(int swipes) {
+        String locator = "new UiScrollable(new UiSelector().resourceIdMatches(\".*ontainer.*\")).flingToEnd(1)";
+        scroll(locator, swipes);
+    }
+
+    /**
+     * Scroll Up (From Bottom to Top).
+     *
+     * @param swipes the swipes
+     * @author Hans.Marquez
+     */
+    public void scrollUp(int swipes) {
+        String locator = "new UiScrollable(new UiSelector().resourceIdMatches(\".*ontainer.*\")).flingToBeginning(1)";
+        scroll(locator, swipes);
+    }
+
 
     /**
      * Scroll.
@@ -65,6 +91,17 @@ public abstract class BaseScreen{
         }
     }
 
+    /**
+     * Scroll to the text attribute received by parameter.
+     *
+     * @param text : String
+     * @author Arley.Bolivar
+     */
+    public void scrollToText(String text) {
+        String automator = "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"%s\"))";
+        AndroidElement textOnElement = driver.findElementByAndroidUIAutomator(format(automator, text));
+        log.info(textOnElement.getText());
+    }
 
     /**
      * Swipe vertical.
@@ -127,6 +164,22 @@ public abstract class BaseScreen{
      */
     public boolean isElementAvailable(AndroidElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 3);
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Wrapper for Visibility event.
+     *
+     * @param element : AndroidElement
+     * @author Hans.Marquez
+     */
+    public boolean isElementAvailable(AndroidElement element, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;

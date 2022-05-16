@@ -2,13 +2,11 @@ package util;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-import io.appium.java_client.remote.MobileCapabilityType;
 
 /**
  * Class for capabilities configuration from external file.

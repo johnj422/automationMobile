@@ -1,18 +1,17 @@
 package util.tests;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import screens.DashBoardScreen;
 import screens.TutorialScreen;
 import util.ConfigCapabilities;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Base class for Test classes.
@@ -54,7 +53,7 @@ public abstract class BaseMobileTest {
      */
     @AfterMethod(alwaysRun = true)
     public void mobileApplicationEnd() {
-         driver.quit();
+        driver.quit();
     }
 
     /**
