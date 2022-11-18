@@ -7,5 +7,6 @@
 	"app": "C:\\Users\\john.arango\\Documents\\Disneyland®_v7.18_APKPure_Installer.apk",
 	"automationName": "UiAutomator2",
 	"autoGrantPermissions": "true",
-    "skipServerInstallation": "true"
+    "skipServerInstallation": "true",
+	"newCommandTimeout": 120
 }
