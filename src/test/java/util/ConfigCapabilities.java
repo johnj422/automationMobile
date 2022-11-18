@@ -32,9 +32,9 @@ public class ConfigCapabilities {
      * @author Arley.Bolivar
      */
     public static void applicationSetUp(DesiredCapabilities capabilities) {
-        capabilities.setCapability("appPackage", getJsonDataProperty(APP_PACKAGE));
-        capabilities.setCapability("appActivity", getJsonDataProperty(APP_ACTIVITY));
-        capabilities.setCapability("app", getJsonDataProperty(APP));
+        capabilities.setCapability(APP_PACKAGE, getJsonDataProperty(APP_PACKAGE));
+        capabilities.setCapability(APP_ACTIVITY, getJsonDataProperty(APP_ACTIVITY));
+        capabilities.setCapability(APP, getJsonDataProperty(APP));
     }
 
     /**
