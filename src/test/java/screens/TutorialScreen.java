@@ -24,16 +24,16 @@ public class TutorialScreen extends BaseScreen {
         super(driver);
     }
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*permission_primary_btn\")")
     private AndroidElement getStartedButton;
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*permission_primary_btn\")")
     private AndroidElement shareLocationButton;
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*android:id/button1\")")
     private AndroidElement allowLocationButton;
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*permission_allow_foreground_only_button\")")
     private AndroidElement allowButton;
 
     /**
