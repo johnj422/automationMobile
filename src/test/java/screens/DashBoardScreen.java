@@ -25,14 +25,14 @@ public class DashBoardScreen extends BaseScreen {
         super(driver);
     }
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*android:id/button2\")")
     private AndroidElement dismissPreferenceUpdateButton;
 
-    @AndroidFindBy(uiAutomator = "")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"dismiss-icon\")")
     private AndroidElement dismissWelcome;
 
     @HowToUseLocators(androidAutomation = ALL_POSSIBLE)
-    @AndroidFindBy(uiAutomator = "//android.widget.ImageView[contains(@content-desc,\"Map\")]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").descriptionContains(\"Map\")")
     private AndroidElement mapButton;
 
     /**
