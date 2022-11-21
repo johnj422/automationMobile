@@ -2,10 +2,12 @@ package tests;
 
 import org.springframework.context.annotation.Description;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import screens.DashBoardScreen;
 import screens.MapScreen;
 import util.tests.BaseMobileTest;
+import org.tinylog.Logger;
+import static org.hamcrest.Matchers.*;
 
 public class NavigationTest extends BaseMobileTest {
 
@@ -15,17 +17,17 @@ public class NavigationTest extends BaseMobileTest {
     @Description(value = "Map screen Navigation test")
     @Test()
     public void navigateToMapScreen() {
-        log.info("Start Navigation to Map Screen");
+        Logger.info("Start Navigation to Map Screen");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         MapScreen map = dashBoard.goToMapScreen();
 
-        log.info("Validate Show List Button");
-        Assert.assertTrue(map.showListIsDisplayed(), "Show List not displayed");
 
-        log.info("Validate Category Button");
+        checkThat("Show List Button is displayed", map.showListIsDisplayed(), is(true));
+
+        Logger.info("Validate Category Button");
         Assert.assertTrue(map.categoryIsDisplayed(), "Category not displayed");
 
-        log.info("Validate Filter Button");
+        Logger.info("Validate Filter Button");
         Assert.assertTrue(map.filterIsDisplayed(), "Filter not displayed");
     }
 

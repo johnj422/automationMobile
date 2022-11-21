@@ -2,16 +2,21 @@ package util.tests;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.tinylog.Logger;
 import screens.DashBoardScreen;
 import screens.TutorialScreen;
 import util.ConfigCapabilities;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matcher;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import static java.lang.String.format;
 
 /**
  * Base class for Test classes.
@@ -22,7 +27,6 @@ public abstract class BaseMobileTest {
 
     protected TutorialScreen tutorialScreen;
     public static AndroidDriver<AndroidElement> driver;
-    public Logger log = Logger.getLogger(BaseMobileTest.class);
 
     public void setUpStartApp() {
         tutorialScreen = new TutorialScreen(getDriver());
@@ -75,6 +79,15 @@ public abstract class BaseMobileTest {
     protected DashBoardScreen loadDashBoardScreen() {
         tutorialScreen.startPermissionsProcess();
         return tutorialScreen.shareLocationPermissions();
+    }
+
+    protected <T> void checkThat(String description, T actualValue, Matcher<? super T> expectedValue){
+        Logger.info(format("Checking that " + description.toLowerCase() + " [Expectation: %s]", expectedValue));
+        try{
+            MatcherAssert.assertThat(actualValue, expectedValue);
+        } catch (AssertionError e){
+            Logger.error(format("Assertion Error: [%s]", e.getMessage().replaceAll("\n", "")));
+        }
     }
 
 }

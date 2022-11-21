@@ -3,6 +3,7 @@ package screens;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.tinylog.Logger;
 import util.screens.BaseScreen;
 
 
@@ -23,6 +24,7 @@ public class TutorialScreen extends BaseScreen {
     public TutorialScreen(AndroidDriver<AndroidElement> driver) {
         super(driver);
     }
+
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*permission_primary_btn\")")
     private AndroidElement getStartedButton;
@@ -49,8 +51,11 @@ public class TutorialScreen extends BaseScreen {
      * Share Location permissions process.
      */
     public DashBoardScreen shareLocationPermissions() {
+        Logger.info("Clicking on share location");
         click(shareLocationButton);
+        Logger.info("Clicking on allowLocationButton");
         click(allowLocationButton);
+        Logger.info("Clicking on allowButton");
         click(allowButton);
         return new DashBoardScreen(driver);
     }

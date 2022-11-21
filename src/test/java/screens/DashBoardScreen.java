@@ -46,7 +46,9 @@ public class DashBoardScreen extends BaseScreen {
         if (this.isElementAvailable(dismissPreferenceUpdateButton, 25)){
             click(dismissPreferenceUpdateButton);
         }
-        click(mapButton);
+        if (this.isElementAvailable(mapButton)){
+            click(mapButton);
+        }
         return new MapScreen(driver);
     }
 }
