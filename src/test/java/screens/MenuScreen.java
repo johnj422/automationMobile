@@ -8,15 +8,12 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import util.screens.BaseScreen;
 
-
-
-
 public class MenuScreen extends BaseScreen {
     /**
      * Constructor method for standard screens object.
      *
      * @param driver : AndroidDriver
-     * @author Arley.Bolivar, Hans.Marquez
+     * @author John Arango
      */
     public MenuScreen(AndroidDriver<AndroidElement> driver) {
         super(driver);
@@ -45,46 +42,121 @@ public class MenuScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").textContains(\"Electronic Communication\")")
     private AndroidElement electronicCommOption;
 
+    /**
+     * Swipes the screen down to the bottom
+     * @author John Arango
+     */
     public void swipeDown() {
-        AndroidElement swipeDown = driver.findElement(
+        driver.findElement(
                 MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).flingToEnd(10)"));
-
+                        "new UiScrollable(new UiSelector().scrollable(true)).flingToEnd(10)"));
     }
+
+    /**
+     *
+     * @return True if the Profile Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isMyProfileVisible() {
         return isElementAvailable(myProfileOption);
     }
+
+    /**
+     *
+     * @return True if the Property Rules option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isPropertyRulesVisible() {
         return isElementAvailable(propertyRulesOption);
     }
+
+    /**
+     *
+     * @return True if the Link to Account Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isLinkToAccountVisible() {
         return isElementAvailable(linkToAccountOption);
     }
+
+    /**
+     *
+     * @return True if the Help Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isHelpVisible() {
         return isElementAvailable(helpOption);
     }
+
+    /**
+     *
+     * @return True if the Privacy & Legacy Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isPrivacyAndLegaVisible() {
         return isElementAvailable(privacyAndLegalOption);
     }
+
+    /**
+     *
+     * Taps the Privacy & Legal Option
+     * @author John Arango
+     */
     public void tapPrivacyAndLegal() {
         isElementAvailable(privacyAndLegalOption);
         click(privacyAndLegalOption);
     }
+
+    /**
+     *
+     * @return True if the Privacy & Policy Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isPrivacyPolicyVisible() {
         return isElementAvailable(privacyPolicyOption);
     }
+
+    /**
+     *
+     * @return True if the Terms of Use Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isTermsOfUseVisible() {
         return isElementAvailable(termsOfUseOption);
     }
+
+    /**
+     *
+     * @return True if the Supplemental Terms Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isSupplementalTermsVisible() {
         return isElementAvailable(supplementalTermsOption);
     }
+
+    /**
+     *
+     * @return True if the Legal Notices Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isLegalNoticesVisible() {
         return isElementAvailable(legalNoticesOption);
     }
+
+    /**
+     *
+     * @return True if the Proper Rules Option is available in this menu, otherwise returns false
+     * @author John Arango
+     */
     public boolean isPropertyRules2Visible() {
         return isElementAvailable(propertyRules2Option);
     }
+
+    /**
+     *
+     * @return True if the Electronic Communication Disclosure Option is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isElectronicCommVisible() {
         return isElementAvailable(electronicCommOption);
     }
