@@ -3,11 +3,8 @@ package screens;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.HowToUseLocators;
 import org.tinylog.Logger;
 import util.screens.BaseScreen;
-
-import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 
 /**
  * DashBoard screen.
@@ -32,7 +29,7 @@ public class DashBoardScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"dismiss-icon\")")
     private AndroidElement dismissWelcome;
 
-    @HowToUseLocators(androidAutomation = ALL_POSSIBLE)
+
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").descriptionContains(\"Map\")")
     private AndroidElement mapButton;
 
@@ -45,6 +42,10 @@ public class DashBoardScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.FrameLayout\").descriptionContains(\"Reserve Dining\")")
     private AndroidElement reserveOption;
 
+    /**
+     * First taps to close default initial screens
+     * @author John Arango
+     */
     public void tapingInitialButtons() {
         Logger.info("Taping dismissWelcome");
         if (this.isElementAvailable(dismissWelcome, 25)){
@@ -57,41 +58,63 @@ public class DashBoardScreen extends BaseScreen {
     }
 
     /**
-     * @author Hans.Marquez
-     * Navigate to Login Screen from DashBoard Screen.
+     * Navigate to Map Screen from DashBoard Screen.
+     * @return New Map Screen
+     * @author John Arango
      */
     public MapScreen goToMapScreen() {
 
         tapingInitialButtons();
 
-        Logger.info("Taping mapButton");
+        Logger.info("Taping Map Button");
+
         if (this.isElementAvailable(mapButton)){
             click(mapButton);
         }
         return new MapScreen(driver);
     }
 
+    /**
+     * Checks if the map button is displayed in the bottom bar
+     * @author John Arango
+     */
     public boolean mapButtonIsDisplayed() {
         return isElementAvailable(mapButton);
     }
 
+    /**
+     * Checks if the Menu button is displayed in the bottom bar
+     * @return New Menu Screen
+     * @author John Arango
+     */
     public MenuScreen goToMenuScreen(){
 
         tapingInitialButtons();
 
         Logger.info("Taping menuButton");
+
         if (this.isElementAvailable(menuButton)){
             click(menuButton);
         }
         return new MenuScreen(driver);
     }
+
+    /**
+     * Checks if the Add Plans option is available on the bottom bar
+     * @author John Arango
+     */
     public void goToAddPlans(){
         tapingInitialButtons();
-        isElementAvailable(addPlansButton);
-        click(addPlansButton);
 
+        isElementAvailable(addPlansButton);
+
+        click(addPlansButton);
     }
 
+    /**
+     * Checks if the reserve option is available in the add plans option on the bottom bar
+     * @author John Arango
+     */
     public boolean isReserveOptionVisible(){
         return isElementAvailable(reserveOption);
     }
