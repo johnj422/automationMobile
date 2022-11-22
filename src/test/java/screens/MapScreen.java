@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.HowToUseLocators;
 import util.screens.BaseScreen;
+import java.util.List;
 
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 
@@ -29,6 +30,11 @@ public class MapScreen extends BaseScreen {
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*categoryTitle\")")
     private AndroidElement categoryList;
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*facilityTypeTitle\")")
+    private List<AndroidElement> categoryListContainer;
+
+    @AndroidFindBy(uiAutomator = "UiSelector().resourceIdMatches(\".*facilityTypeTitle\").text(\"Hotels\")")
+    private AndroidElement hotelsIncluded;
 
     @HowToUseLocators(androidAutomation = ALL_POSSIBLE)
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*filterTitle.*\")")
@@ -44,9 +50,22 @@ public class MapScreen extends BaseScreen {
      * @author Hans.Marquez
      * return true if Category List element is displayed in screen, otherwise false.
      */
+
     public boolean categoryIsDisplayed() {
         return isElementAvailable(categoryList);
     }
+    public void clickCategoryButton(){
+        if(categoryIsDisplayed()){
+            click((categoryList));
+        }
+    }
+    public int checkCategoryContainerSize(){
+        return categoryListContainer.size();
+    }
+    public boolean isHotelsIncluded() {
+        return isElementAvailable(hotelsIncluded);
+    }
+
 
     /**
      * @author Hans.Marquez

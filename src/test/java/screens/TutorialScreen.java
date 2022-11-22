@@ -51,11 +51,11 @@ public class TutorialScreen extends BaseScreen {
      * Share Location permissions process.
      */
     public DashBoardScreen shareLocationPermissions() {
-        Logger.info("Clicking on share location");
+        Logger.info("Taping shareLocationButton");
         click(shareLocationButton);
-        Logger.info("Clicking on allowLocationButton");
+        Logger.info("Taping allowLocationButton");
         click(allowLocationButton);
-        Logger.info("Clicking on allowButton");
+        Logger.info("Taping allowButton");
         click(allowButton);
         return new DashBoardScreen(driver);
     }
