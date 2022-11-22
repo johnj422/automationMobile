@@ -75,7 +75,7 @@ public class DashBoardScreen extends BaseScreen {
     }
 
     /**
-     * Checks if the map button is displayed in the bottom bar
+     * @return True if the map button is displayed in the bottom bar otherwise returns false
      * @author John Arango
      */
     public boolean mapButtonIsDisplayed() {
@@ -100,7 +100,7 @@ public class DashBoardScreen extends BaseScreen {
     }
 
     /**
-     * Checks if the Add Plans option is available on the bottom bar
+     * Checks if the Add Plans option is available on the bottom bar if so, taps the option.
      * @author John Arango
      */
     public void goToAddPlans(){
@@ -112,7 +112,7 @@ public class DashBoardScreen extends BaseScreen {
     }
 
     /**
-     * Checks if the reserve option is available in the add plans option on the bottom bar
+     * @return True if the reserve option is available in the add plans option on the bottom bar otherwise returns false
      * @author John Arango
      */
     public boolean isReserveOptionVisible(){
