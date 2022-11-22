@@ -15,25 +15,25 @@ public class NavigationTest extends BaseMobileTest {
      * Validate Map Screen Navigation.
      */
     @Description(value = "Category List Test")
-    @Test
+    @Test(priority = 0)
     public void navigateToCategoryList() {
-        Logger.info("Start Navigation to Map Screen");
+        Logger.info("Navigating to Category List");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         MapScreen map = dashBoard.goToMapScreen();
 
         checkThat("Map button is displayed", dashBoard.mapButtonIsDisplayed(), is(true));
-        checkThat("Validate Category Button is displayed", map.categoryIsDisplayed(), is(true));
+        checkThat("Category Button is displayed", map.categoryIsDisplayed(), is(true));
         Logger.info("Taping category button");
         map.clickCategoryButton();
-        checkThat("Validate CategoryList has elements", map.checkCategoryContainerSize(), not(0));
-        checkThat("Validate Hotels category is displayed", map.isHotelsIncluded(), is(true));
+        checkThat("CategoryList has elements", map.checkCategoryContainerSize(), not(0));
+        checkThat("Hotels category is displayed", map.isHotelsIncluded(), is(true));
         Logger.info("Category List Test completed");
     }
 
-    @Description(value = "Privacy & Policy Test")
-    @Test
-    public void navigateToPrivacyAndPolicy(){
-        Logger.info("Starting privacy and policy");
+    @Description(value = "Privacy & Legal Test")
+    @Test(priority = 1)
+    public void navigateToPrivacyAndLegal(){
+        Logger.info("Navigating to Privacy & Legal");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         MenuScreen menu = dashBoard.goToMenuScreen();
         Logger.info("Swiping down");
@@ -51,5 +51,17 @@ public class NavigationTest extends BaseMobileTest {
         checkThat("Legal Notices is available", menu.isLegalNoticesVisible(), is(true));
         checkThat("Property Rules is available", menu.isPropertyRules2Visible(), is(true));
         checkThat("Electronic Communication Disclosure is available", menu.isElectronicCommVisible(), is(true));
+        Logger.info("Privacy & Legal Test completed");
+    }
+
+    @Description(value = "Add Plans Option")
+    @Test(priority = 2)
+    public void navigateToAddPlans(){
+        Logger.info("Navigating to Add Plans");
+        DashBoardScreen dashBoard = loadDashBoardScreen();
+        Logger.info("Taping Add Plans Option");
+        dashBoard.goToAddPlans();
+        checkThat("Reserve Dinning Option is available", dashBoard.isReserveOptionVisible(), is(true));
+        Logger.info("Add Plans Option Test completed");
     }
 }

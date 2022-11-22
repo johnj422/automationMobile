@@ -55,10 +55,10 @@ public abstract class BaseMobileTest {
      *
      * @author Arley.Bolivar
      */
-   /* @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void mobileApplicationEnd() {
         driver.quit();
-    }*/
+    }
 
     /**
      * return the driver.

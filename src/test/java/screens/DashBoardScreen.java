@@ -39,6 +39,12 @@ public class DashBoardScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\"com.disney.wdpro.dlr:id/tab_icon\").descriptionContains(\"More\")")
     private AndroidElement menuButton;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\"com.disney.wdpro.dlr:id/tab_animated_icon\")")
+    private AndroidElement addPlansButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.FrameLayout\").descriptionContains(\"Reserve Dining\")")
+    private AndroidElement reserveOption;
+
     public void tapingInitialButtons() {
         Logger.info("Taping dismissWelcome");
         if (this.isElementAvailable(dismissWelcome, 25)){
@@ -78,5 +84,15 @@ public class DashBoardScreen extends BaseScreen {
             click(menuButton);
         }
         return new MenuScreen(driver);
+    }
+    public void goToAddPlans(){
+        tapingInitialButtons();
+        isElementAvailable(addPlansButton);
+        click(addPlansButton);
+
+    }
+
+    public boolean isReserveOptionVisible(){
+        return isElementAvailable(reserveOption);
     }
 }
