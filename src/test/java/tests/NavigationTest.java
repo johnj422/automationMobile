@@ -24,7 +24,7 @@ public class NavigationTest extends BaseMobileTest {
         checkThat("Map button is displayed", dashBoard.mapButtonIsDisplayed(), is(true));
         checkThat("Category Button is displayed", map.categoryIsDisplayed(), is(true));
         Logger.info("Taping category button");
-        map.clickCategoryButton();
+        map.tapCategoryButton();
         checkThat("CategoryList has elements", map.checkCategoryContainerSize(), not(0));
         checkThat("Hotels category is displayed", map.isHotelsIncluded(), is(true));
         Logger.info("Category List Test completed");

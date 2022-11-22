@@ -9,8 +9,6 @@ import java.util.List;
 
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 
-// TODO: Auto-generated Javadoc
-
 /**
  * Map screen.
  *
@@ -54,33 +52,32 @@ public class MapScreen extends BaseScreen {
     public boolean categoryIsDisplayed() {
         return isElementAvailable(categoryList);
     }
-    public void clickCategoryButton(){
+
+    /**
+     * Checks if the Category Button is displayed at the top bar, if so, taps the Category option
+     * @author John Arango
+     */
+    public void tapCategoryButton(){
         if(categoryIsDisplayed()){
             click((categoryList));
         }
     }
+
+    /**
+     * Checks the Category List
+     * @return The amount of items included in the list
+     * @author John Arango
+     */
     public int checkCategoryContainerSize(){
         return categoryListContainer.size();
     }
+
+    /**
+     * @return True if the Category Hotels is available, otherwise returns false
+     * @author John Arango
+     */
     public boolean isHotelsIncluded() {
         return isElementAvailable(hotelsIncluded);
-    }
-
-
-    /**
-     * @author Hans.Marquez
-     * return true if Filter Button element is displayed in screen, otherwise false.
-     */
-    public boolean filterIsDisplayed() {
-        return isElementAvailable(filterButton);
-    }
-
-    /**
-     * @author Hans.Marquez
-     * return true if Show List Button element is displayed in screen, otherwise false.
-     */
-    public boolean showListIsDisplayed() {
-        return isElementAvailable(showListButton);
     }
 
 }
