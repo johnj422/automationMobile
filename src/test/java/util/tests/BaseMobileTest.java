@@ -43,7 +43,7 @@ public abstract class BaseMobileTest {
         ConfigCapabilities.deviceSetUp(capabilities);
         ConfigCapabilities.applicationSetUp(capabilities);
         try {
-            driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         } catch (MalformedURLException exception) {
             exception.printStackTrace();
         }
@@ -81,6 +81,13 @@ public abstract class BaseMobileTest {
         return tutorialScreen.shareLocationPermissions();
     }
 
+    /**
+     * Takes the description of the assertion and matches the actualValue against the expectedValue
+     * @param description String expressed in the assertion
+     * @param actualValue Received value from the assertion
+     * @param expectedValue Expected value to match with the actualValue
+     * @param <T> Type of value to match
+     */
     protected <T> void checkThat(String description, T actualValue, Matcher<? super T> expectedValue){
         Logger.info(format("Checking that " + description.toLowerCase() + " [Expectation: %s]", expectedValue));
         try{
