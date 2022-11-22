@@ -15,7 +15,7 @@ public class NavigationTest extends BaseMobileTest {
      * Validate Map Screen Navigation.
      */
     @Description(value = "Category List Test")
-    @Test(priority = 0)
+    @Test
     public void navigateToCategoryList() {
         Logger.info("Navigating to Category List");
         DashBoardScreen dashBoard = loadDashBoardScreen();
@@ -30,6 +30,10 @@ public class NavigationTest extends BaseMobileTest {
         Logger.info("Category List Test completed");
     }
 
+    /**
+     * Validates navigation to Privacy & Legal
+     * @author John Arango
+     */
     @Description(value = "Privacy & Legal Test")
     @Test(priority = 1)
     public void navigateToPrivacyAndLegal(){
@@ -54,6 +58,10 @@ public class NavigationTest extends BaseMobileTest {
         Logger.info("Privacy & Legal Test completed");
     }
 
+    /**
+     * Validates navigation to Add Plans
+     * @author John Arango
+     */
     @Description(value = "Add Plans Option")
     @Test(priority = 2)
     public void navigateToAddPlans(){
